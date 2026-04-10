@@ -4,6 +4,53 @@
 
 @layer base {
   :root {
+    --background: 0 0% 98%;
+    --foreground: 228 15% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 228 15% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 228 15% 10%;
+
+    --primary: 262 83% 58%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 14% 92%;
+    --secondary-foreground: 228 15% 20%;
+
+    --muted: 220 14% 94%;
+    --muted-foreground: 215 15% 45%;
+
+    --accent: 180 70% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 220 13% 87%;
+    --input: 220 13% 87%;
+    --ring: 262 83% 58%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 96%;
+    --sidebar-foreground: 228 15% 10%;
+    --sidebar-primary: 262 83% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 14% 92%;
+    --sidebar-accent-foreground: 228 15% 10%;
+    --sidebar-border: 220 13% 87%;
+    --sidebar-ring: 262 83% 58%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(262 83% 58%), hsl(180 70% 50%));
+    --gradient-glow: linear-gradient(135deg, hsl(262 83% 58% / 0.2), hsl(180 70% 50% / 0.2));
+    --gradient-card: linear-gradient(135deg, hsl(0 0% 100%), hsl(220 14% 96%));
+    --glass-bg: hsl(0 0% 100% / 0.7);
+    --glass-border: hsl(228 15% 10% / 0.08);
+  }
+
+  .dark {
     --background: 228 15% 6%;
     --foreground: 210 20% 95%;
 
@@ -31,8 +78,6 @@
     --border: 228 12% 18%;
     --input: 228 12% 18%;
     --ring: 262 83% 58%;
-
-    --radius: 0.75rem;
 
     --sidebar-background: 228 15% 8%;
     --sidebar-foreground: 210 20% 95%;
@@ -80,8 +125,13 @@
   }
 
   .glass-strong {
-    background: hsl(228 15% 10% / 0.8);
+    background: hsl(0 0% 100% / 0.8);
     backdrop-filter: blur(30px);
+    border: 1px solid hsl(228 15% 10% / 0.1);
+  }
+
+  .dark .glass-strong {
+    background: hsl(228 15% 10% / 0.8);
     border: 1px solid hsl(210 20% 95% / 0.1);
   }
 
