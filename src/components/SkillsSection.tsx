@@ -1,27 +1,44 @@
 import { motion } from "framer-motion";
 
 const skillGroups = [
-  { label: "Frontend", skills: ["React", "TypeScript", "Tailwind CSS", "Next.js", "Vue.js"] },
-  { label: "Backend", skills: ["Node.js", "Express", "Python", "PostgreSQL", "MongoDB"] },
-  { label: "Tools", skills: ["Git", "Docker", "AWS", "Figma", "CI/CD"] },
+  {
+    label: "Frontend",
+    icon: "🎨",
+    skills: ["React / Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Vue.js"],
+  },
+  {
+    label: "Backend",
+    icon: "⚡",
+    skills: ["Node.js / Express", "Python / FastAPI", "PostgreSQL", "MongoDB", "GraphQL"],
+  },
+  {
+    label: "DevOps & Tools",
+    icon: "🛠",
+    skills: ["Docker / K8s", "AWS / Vercel", "CI/CD Pipelines", "Git / GitHub", "Figma"],
+  },
 ];
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="py-32">
+    <section id="skills" className="py-32 relative">
+      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="mb-16"
+          className="text-center mb-16"
         >
-          <p className="text-sm uppercase tracking-widest text-muted-foreground mb-4">Expertise</p>
-          <h2 className="text-4xl md:text-5xl font-display text-foreground">Skills & Technologies</h2>
+          <span className="inline-block text-sm font-display font-medium text-accent tracking-wider uppercase mb-4">
+            Expertise
+          </span>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground">
+            Skills & <span className="text-gradient">Technologies</span>
+          </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-12">
+        <div className="grid md:grid-cols-3 gap-6">
           {skillGroups.map((group, i) => (
             <motion.div
               key={group.label}
@@ -29,14 +46,16 @@ const SkillsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.15 }}
+              className="glass rounded-xl p-8 hover-glow"
             >
-              <h3 className="font-display text-xl text-foreground mb-6 pb-4 border-b border-border">
+              <div className="text-3xl mb-4">{group.icon}</div>
+              <h3 className="font-display text-xl font-bold text-foreground mb-6">
                 {group.label}
               </h3>
               <ul className="space-y-3">
                 {group.skills.map((skill) => (
-                  <li key={skill} className="text-muted-foreground flex items-center gap-3">
-                    <span className="w-1.5 h-1.5 bg-accent rounded-full" />
+                  <li key={skill} className="flex items-center gap-3 text-muted-foreground">
+                    <span className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-primary to-accent flex-shrink-0" />
                     {skill}
                   </li>
                 ))}
