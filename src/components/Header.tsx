@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
+import ThemeToggle from "./ThemeToggle";
 const navItems = ["About", "Projects", "Skills", "Contact"];
 
 const Header = () => {
@@ -57,7 +57,7 @@ const Header = () => {
             >
               Hire Me
             </motion.button>
-          </nav>
+            <ThemeToggle />
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
             className="md:hidden flex flex-col gap-1.5 p-2"
