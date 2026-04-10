@@ -58,7 +58,11 @@ const Header = () => {
               Hire Me
             </motion.button>
             <ThemeToggle />
-          <button
+          </nav>
+          <div className="flex items-center gap-2 md:hidden">
+            <ThemeToggle />
+            <button
+
             onClick={() => setMobileOpen(!mobileOpen)}
             className="md:hidden flex flex-col gap-1.5 p-2"
           >
