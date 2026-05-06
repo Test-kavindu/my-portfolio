@@ -1,60 +1,46 @@
 import { motion } from "framer-motion";
-
-const stats = [
-  { value: "3+", label: "Years Experience" },
-  { value: "20+", label: "Projects Delivered" },
-  { value: "15+", label: "Happy Clients" },
-  { value: "99%", label: "Client Satisfaction" },
-];
+import { profile } from "@/data/profile";
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-32 relative">
+    <section id="about" className="py-20 md:py-32 relative">
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: false, margin: "-100px" }}
           transition={{ duration: 0.8 }}
-          className="grid lg:grid-cols-2 gap-20 items-center"
+          className="grid lg:grid-cols-2 gap-12 md:gap-20 items-center"
         >
           <div>
-            <span className="inline-block text-sm font-display font-medium text-accent tracking-wider uppercase mb-4">
-              About Me
-            </span>
+            <span className="inline-block text-sm font-display font-medium text-accent tracking-wider uppercase mb-4">{profile.about.heading}</span>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-foreground leading-tight mb-8">
-              Building the future,
+              {profile.about.subheading.split("\n")[0]}
               <br />
-              <span className="text-gradient">one pixel at a time</span>
+              <span className="text-gradient">{profile.about.subheading.split("\n")[1]}</span>
             </h2>
             <div className="space-y-5 text-muted-foreground text-lg leading-relaxed">
-              <p>
-                I'm a passionate full-stack developer who thrives at the intersection of
-                design and engineering. I build applications that are blazing fast,
-                visually stunning, and a joy to use.
-              </p>
-              <p>
-                From scalable backends to pixel-perfect frontends, I bring ideas to life
-                with modern technologies and an obsessive eye for detail.
-              </p>
+              {profile.about.paragraphs.map((p) => (
+                <p key={p}>{p}</p>
+              ))}
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
-            {stats.map((stat, i) => (
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {profile.about.cards.map((card, i) => (
               <motion.div
-                key={stat.label}
+                key={card.label}
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
+                viewport={{ once: false }}
                 transition={{ delay: i * 0.1, duration: 0.5 }}
                 className="glass rounded-xl p-6 text-center hover-glow"
               >
                 <p className="text-3xl md:text-4xl font-display font-bold text-gradient mb-2">
-                  {stat.value}
+                  {card.title}
                 </p>
-                <p className="text-sm text-muted-foreground">{stat.label}</p>
+                <p className="text-sm text-muted-foreground">{card.label}</p>
               </motion.div>
             ))}
           </div>
