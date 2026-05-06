@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ThemeToggle from "./ThemeToggle";
+import { profile } from "@/data/profile";
 const navItems = ["About", "Projects", "Skills", "Contact"];
 
 const Header = () => {
@@ -52,7 +53,17 @@ const Header = () => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 1 }}
-              onClick={() => scrollTo("Contact")}
+              onClick={() => {
+                const emailSubject = encodeURIComponent("Project Inquiry - Collaboration Opportunity");
+                const emailHref = profile.contact.email
+                  ? `https://mail.google.com/mail/?view=cm&fs=1&to=${profile.contact.email}&su=${emailSubject}`
+                  : "#";
+                if (emailHref === "#") {
+                  scrollTo("Contact");
+                  return;
+                }
+                window.open(emailHref, "_blank", "noopener,noreferrer");
+              }}
               className="ml-4 px-5 py-2 text-sm font-medium rounded-lg bg-primary text-primary-foreground hover:opacity-90 transition-opacity"
             >
               Hire Me
